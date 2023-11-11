@@ -23,15 +23,42 @@
     <div>
       <label for="item">Enter a new item:</label>
       <input type="text" name="item" id="item">
-      <button>Add item</button>
+      <button id="btn">Add item</button>
     </div>
 
-    <ul>
+    <ul id="list">
 
     </ul>
 
     <script>
+      const list = document.querySelector("#list");
+      const item = document.querySelector("#item");
+      const btn = document.querySelector("#btn");
 
+      const buttonClick = (e) => {
+
+        const newItem = document.createElement("li");
+        const newSpan = document.createElement("span");
+        const btnNew = document.createElement("button");
+        
+        btnNew.innerText = "Delete";
+        btnNew.addEventListener('click', () => {
+          console.log("delete")
+          newItem.remove();
+        });
+
+        list.append(newItem); // this works, but only for a single item
+        newItem.append(newSpan);
+        newItem.append(btnNew);
+        newSpan.innerText = item.value;
+        item.value = "";
+      }
+
+      btn.addEventListener('click', buttonClick);
+      
+
+      
+      
     </script>
   </body>
 </html>
